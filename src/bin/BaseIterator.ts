@@ -1,5 +1,5 @@
 import type { INode } from '@/@types/general';
-import type { IIterator } from '@/@types/IIterator';
+import type { IIterator } from '@/@types/iterator';
 import { unknown, object, array, set, map } from '@/lib/type-names';
 import getNodeType from '@/lib/get-node-type';
 import isPrimitive from '@/lib/is-primitive';

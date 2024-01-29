@@ -210,6 +210,14 @@ Due to the fact that the iterator does not use recursion, it is guaranteed that 
 
 You don't have to worry about the iterator going into a loop if two objects refer to each other. Since each “vertex of the graph” is written into the Set structure, and if the iterator hits an already processed vertex, the iterator switches to processing the next one.
 
+## TypeScript
+
+You can import types from the library
+
+```js
+import type { INode, TNode, IIterator } from '@qpyracuk/iterator'
+```
+
 ## Author
 
 The author of the library is Pobedinskiy David.

@@ -1,7 +1,8 @@
-import DepthFirstIterator from './bin/DepthFirstIterator';
-import BreadthFirstIterator from './bin/BreadthFirstIterator';
-import { INode } from './@types/general';
-
+import DepthFirstIterator from '@/bin/DepthFirstIterator';
+import BreadthFirstIterator from '@/bin/BreadthFirstIterator';
+import { INode } from '@/@types/general';
+export * from '@/@types/general';
+export * from '@/@types/iterator';
 /**
  * @descroption Iterator builder. Contains static methods for generating iterators or ready-made
  * sequences obtained by traversing your object with an iterator

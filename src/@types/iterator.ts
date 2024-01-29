@@ -1,4 +1,4 @@
-import { INode } from './general';
+import type { INode } from '@/@types/general';
 /**
  * @interface IIterator Iterator Interface
  * @description Standard interface for all types of iterators
