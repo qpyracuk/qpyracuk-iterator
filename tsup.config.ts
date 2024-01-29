@@ -6,7 +6,7 @@ export default defineConfig({
   outDir: 'dist',
   treeshake: true,
   minify: true,
-  bundle: false,
+  bundle: true,
   dts: true,
   shims: true,
   skipNodeModulesBundle: false,
