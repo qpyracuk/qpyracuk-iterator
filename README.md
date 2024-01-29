@@ -9,8 +9,6 @@ When traversed, the iterator uses non-recursive traversal algorithms, so you don
 
 ## Installation
 
----
-
 This is a JS library available through the npm registry.
 Before installation, you need to download and install `Node.js`.
 Requires `Node.js v0.1.0 or higher`.
@@ -25,8 +23,6 @@ npm intall @qpyracuk/iterator
 
 ## Features
 
----
-
 - Creating a `depth-first` iterator;
 - Creating a `breadth-first` iterator;
 - Receiving a ready sequence of nodes in the order corresponding to the selected bypass algorithm;
@@ -38,8 +34,6 @@ npm intall @qpyracuk/iterator
 - Support for `CommonJS` and `ESMAScript` modules.
 
 ## Quick Start
-
----
 
 After installing the package, import the library.
 
@@ -57,18 +51,16 @@ const Iterator = require('@qpyracuk/iterator');
 
 ### Usage example
 
----
-
 #### We create an object that needs to be traversed
 
 ```js
 const object = {
-	primitive: '1',
-	object: {
-		primitive: 3,
-		set: new Set([1, 2, new Map([['key', { field: { value: 100 } }]])]),
-		map: new Map([['key', { value: 10 }]])
-	}
+  primitive: '1',
+  object: {
+    primitive: 3,
+    set: new Set([1, 2, new Map([['key', { field: { value: 100 } }]])]),
+    map: new Map([['key', { value: 10 }]])
+  }
 };
 ```
 
@@ -79,13 +71,13 @@ const object = {
 const depthIterator = Iterator.createDepthIterator(object);
 // Traversal of all nodes
 while (depthIterator.has()) {
-	console.log('depth', depthIterator.next());
+  console.log('depth', depthIterator.next());
 }
 // Resetting the current iterator state
 depthIterator.reset();
 // Traversing the primitive values of all nodes
 while (depthIterator.has()) {
-	console.log('depth-primitive', depthIterator.nextLiaf());
+  console.log('depth-primitive', depthIterator.nextLiaf());
 }
 ```
 
@@ -96,13 +88,13 @@ while (depthIterator.has()) {
 const breadthIterator = Iterator.createBreadthIterator(object);
 // Traversal of all nodes
 while (breadthIterator.has()) {
-	console.log('breadth', breadthIterator.next());
+  console.log('breadth', breadthIterator.next());
 }
 // Resetting the current iterator state
 breadthIterator.reset();
 // Traversing the primitive values of all nodes
 while (breadthIterator.has()) {
-	console.log('breadth-primitive', breadthIterator.nextLiaf());
+  console.log('breadth-primitive', breadthIterator.nextLiaf());
 }
 ```
 
@@ -121,35 +113,31 @@ console.log(createBreadthFirstSequenceLiaf(object));
 
 ### Return value
 
----
-
 Iterators return an object corresponding to the internal interface `INode`.
 
 ```ts
 interface INode {
-	value: any; // Node value.
-	key: string; // Name of the object field (for the root object key === 'root').
-	level: number; // Nesting level of the current value.
-	type:
-		| 'string' // If the current value is a string.
-		| 'number' // If the current value is a number.
-		| 'boolean' // If the current value is a boolean type.
-		| 'symbol' // If the current value is a character.
-		| 'bigint' // If the current value is BigInt.
-		| 'undefined' // If the current value is undefined.
-		| 'null' // If the current value is null.
-		| 'object' // If the current node is an object.
-		| 'map' // If the current node is a key-value map.
-		| 'set' // If the current node is a Set collection.
-		| 'array' // If the current node is an array.
-		| 'function' // If the current node is a function.
-		| ''; // May return in case of unknown data type.
+  value: any; // Node value.
+  key: string; // Name of the object field (for the root object key === 'root').
+  level: number; // Nesting level of the current value.
+  type:
+    | 'string' // If the current value is a string.
+    | 'number' // If the current value is a number.
+    | 'boolean' // If the current value is a boolean type.
+    | 'symbol' // If the current value is a character.
+    | 'bigint' // If the current value is BigInt.
+    | 'undefined' // If the current value is undefined.
+    | 'null' // If the current value is null.
+    | 'object' // If the current node is an object.
+    | 'map' // If the current node is a key-value map.
+    | 'set' // If the current node is a Set collection.
+    | 'array' // If the current node is an array.
+    | 'function' // If the current node is a function.
+    | ''; // May return in case of unknown data type.
 }
 ```
 
 ### Iterator builder methods
-
----
 
 All methods take 2 parameters as input
 `root` - any value _(required)_.
@@ -181,8 +169,6 @@ Creates an array of INode interface objects. An array is a linear sequence of al
 
 ### Iterator methods
 
----
-
 #### has(): `boolean`
 
 Checks whether the end of the traversal has been reached.
@@ -207,15 +193,11 @@ Resets the iterator state to the initial state
 
 ### Traversal depth
 
----
-
 Each Iterator class method takes a second parameter, `depth`.
 By default it is set to `"Infinity"`, which tells the iterator to iterate over the object completely.
 But you can artificially limit the traversal depth by specifying a numerical value `depth > 0`.
 
 ## Algorithms
-
----
 
 Iterators implement two `non-recursive` traversal algorithms:
 
@@ -226,26 +208,18 @@ Due to the fact that the iterator does not use recursion, it is guaranteed that 
 
 ### Protection against reference loops
 
----
-
 You don't have to worry about the iterator going into a loop if two objects refer to each other. Since each “vertex of the graph” is written into the Set structure, and if the iterator hits an already processed vertex, the iterator switches to processing the next one.
 
 ## Author
-
----
 
 The author of the library is Pobedinskiy David.
 
 ## Bugs
 
----
-
 If you encounter unexpected errors, please let me know.
 By e-mail [qpyracuk@gmail.com](qpyracuk@gmail.com) or in [Telegram](https://t.me/qpyracuk).
 
 ## Support the author
-
----
 
 If my work has helped you make your life easier, you can support me with your donations.
 
