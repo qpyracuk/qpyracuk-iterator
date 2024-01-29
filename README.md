@@ -15,10 +15,10 @@ Requires `Node.js v0.1.0 or higher`.
 
 If this is a completely new project, be sure to create a `package.json` file using the npm init command.
 
-To install the package, enter the `npm intall @qpyracuk/iterator` command in the console.
+To install the package, enter the `npm install @qpyracuk/iterator` command in the console.
 
 ```sh
-npm intall @qpyracuk/iterator
+npm install @qpyracuk/iterator
 ```
 
 ## Features
