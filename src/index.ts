@@ -3,7 +3,8 @@ import BreadthFirstIterator from './bin/BreadthFirstIterator';
 import { INode } from './@types/general';
 
 /**
- * @descroption Iterator builder. Contains static methods for generating iterators or ready-made sequences obtained by traversing your object with an iterator
+ * @descroption Iterator builder. Contains static methods for generating iterators or ready-made
+ * sequences obtained by traversing your object with an iterator
  * @class
  */
 export default class Iterator {
@@ -34,16 +35,18 @@ export default class Iterator {
 	}
 
 	/**
-	 * @description Creates an array of INode interface objects. The array is a linear sequence of ALL nodes obtained during a depth-first traversal of the object tree
+	 * @description Creates an array of INode interface objects. The array is a linear sequence of
+	 * ALL nodes obtained during a depth-first traversal of the object tree
 	 * @param {any} root Any value
 	 * @param {number | 'Infinity'} depth Maximum object bypass depth
-	 * @returns {INode[]} An array of ALL object nodes arranged in order corresponding to the result of a depth-first traversal of this object
+	 * @returns {INode[]} An array of ALL object nodes arranged in order corresponding to the result
+	 * of a depth-first traversal of this object
 	 * @static
 	 */
 	static createDepthFirstSequenceNode(root: any, depth: number | 'Infinity' = 'Infinity'): INode[] {
-		let iterator = Iterator.createDepthFirstIterator(root, depth),
-			response: INode[] = [],
-			item;
+		const iterator = Iterator.createDepthFirstIterator(root, depth),
+			response: INode[] = [];
+		let item: INode | undefined;
 		while ((item = iterator.next())) {
 			response.push(item);
 		}
@@ -51,16 +54,18 @@ export default class Iterator {
 	}
 
 	/**
-	 * @description Creates an array of INode interface objects. The array is a linear sequence of ALL nodes obtained during a breadth-first traversal of the object tree
+	 * @description Creates an array of INode interface objects. The array is a linear sequence of
+	 * ALL nodes obtained during a breadth-first traversal of the object tree
 	 * @param {any} root Any value
 	 * @param {number | 'Infinity'} depth Maximum object bypass depth
-	 * @returns {INode[]} An array of ALL object nodes arranged in order corresponding to the result of a breadth-first traversal of this object
+	 * @returns {INode[]} An array of ALL object nodes arranged in order corresponding to the result
+	 * of a breadth-first traversal of this object
 	 * @static
 	 */
 	static createBreadthFirstSequenceNode(root: any, depth: number | 'Infinity' = 'Infinity'): INode[] {
-		let iterator = Iterator.createBreadthFirstIterator(root, depth),
-			response: INode[] = [],
-			item;
+		const iterator = Iterator.createBreadthFirstIterator(root, depth),
+			response: INode[] = [];
+		let item: INode | undefined;
 		while ((item = iterator.next())) {
 			response.push(item);
 		}
@@ -68,16 +73,18 @@ export default class Iterator {
 	}
 
 	/**
-	 * @description Creates an array of INode interface objects. An array is a linear sequence of all PRIMITIVE VALUES obtained from a depth-first traversal of the object tree.
+	 * @description Creates an array of INode interface objects. An array is a linear sequence of
+	 * all PRIMITIVE VALUES obtained from a depth-first traversal of the object tree.
 	 * @param {any} root Any value
 	 * @param {number | 'Infinity'} depth Maximum object bypass depth
-	 * @returns {INode[]} An array of PRIMITIVE values ​​of objects, arranged in order corresponding to the result of a depth-first traversal of this object.
+	 * @returns {INode[]} An array of PRIMITIVE values  of objects, arranged in order corresponding
+	 * to the result of a depth-first traversal of this object.
 	 * @static
 	 */
 	static createDepthFirstSequenceLiaf(root: any, depth: number | 'Infinity' = 'Infinity'): INode[] {
-		let iterator = Iterator.createDepthFirstIterator(root, depth),
-			response: INode[] = [],
-			item;
+		const iterator = Iterator.createDepthFirstIterator(root, depth),
+			response: INode[] = [];
+		let item: INode | undefined;
 		while ((item = iterator.nextLiaf())) {
 			response.push(item);
 		}
@@ -85,16 +92,18 @@ export default class Iterator {
 	}
 
 	/**
-	 * @description Creates an array of INode interface objects. An array is a linear sequence of all PRIMITIVE VALUES obtained from a breadth-first traversal of the object tree.
+	 * @description Creates an array of INode interface objects. An array is a linear sequence of all
+	 * PRIMITIVE VALUES obtained from a breadth-first traversal of the object tree.
 	 * @param {any} root Any value
 	 * @param {number | 'Infinity'} depth Maximum object bypass depth
-	 * @returns {INode[]} An array of PRIMITIVE values ​​of objects, arranged in order corresponding to the result of a breadth-first traversal of this object.
+	 * @returns {INode[]} An array of PRIMITIVE values   of objects, arranged in order corresponding
+	 * to the result of a breadth-first traversal of this object.
 	 * @static
 	 */
 	static createBreadthFirstSequenceLiaf(root: any, depth: number | 'Infinity' = 'Infinity'): INode[] {
-		let iterator = Iterator.createBreadthFirstIterator(root, depth),
-			response: INode[] = [],
-			item;
+		const iterator = Iterator.createBreadthFirstIterator(root, depth),
+			response: INode[] = [];
+		let item: INode | undefined;
 		while ((item = iterator.nextLiaf())) {
 			response.push(item);
 		}

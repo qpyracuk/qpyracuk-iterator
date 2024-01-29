@@ -6,7 +6,7 @@ const set = 'map';
 const map = 'map';
 
 export default function getNodeType(node: any): TNode {
-	let type = typeof node;
+	const type = typeof node;
 	if (type === object) {
 		if (node instanceof Array) return array;
 		else if (node instanceof Set) return set;

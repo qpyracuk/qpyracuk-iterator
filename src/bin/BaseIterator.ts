@@ -23,9 +23,9 @@ export default class BaseIterator implements IIterator {
 		if (algorithm === 'depth') this._algorithm = true;
 		else if (algorithm === 'breadth') this._algorithm = false;
 		else throw new Error('Incorrect algorithm name');
-
-		if (isPrimitive(root)) this._storage.push({ value: root, level: 0, type: getNodeType(root), key: 'root' });
-		else this._handler({ value: root, level: 0, type: unknown, key: 'root' });
+		const rootNode = { value: root, level: 0, key: root, type: getNodeType(root) };
+		if (isPrimitive(rootNode)) this._storage.push(rootNode);
+		else this._handler(rootNode);
 	}
 
 	public has(): boolean {
@@ -38,7 +38,7 @@ export default class BaseIterator implements IIterator {
 
 	public next(): INode | undefined {
 		let repeat = false,
-			node;
+			node: INode | undefined;
 		do {
 			node = this._getNextNode();
 			this._current = node;
@@ -50,7 +50,7 @@ export default class BaseIterator implements IIterator {
 	}
 
 	public nextLiaf(): INode | undefined {
-		let liaf;
+		let liaf: INode | undefined;
 		do {
 			liaf = this.next();
 			if (liaf === undefined) return undefined;
@@ -66,9 +66,9 @@ export default class BaseIterator implements IIterator {
 	}
 
 	private _handler(node: INode): boolean {
-		let nextLevel = node.level + 1;
+		const nextLevel = node.level + 1;
 		if (!(this._isInfinity || this._depth > node.level)) return true;
-		let type = typeof node.value;
+		const type = typeof node.value;
 		if (type === object && !this._filter.has(node.value)) {
 			this._filter.add(node.value);
 			if (node.value instanceof Array) {
@@ -91,12 +91,17 @@ export default class BaseIterator implements IIterator {
 				});
 			} else {
 				node.type = object;
-				let keys = Object.keys(node.value);
+				const keys = Object.keys(node.value);
 				if (keys.length > 0) {
 					let i = keys.length - 1;
 					do {
-						if (node.value.hasOwnProperty(keys[i]))
-							this._storage.push({ value: node.value[keys[i]], key: keys[i], level: nextLevel, type: getNodeType(node.value[keys[i]]) });
+						if (Object.prototype.hasOwnProperty.call(node.value, keys[i]))
+							this._storage.push({
+								value: node.value[keys[i]],
+								key: keys[i],
+								level: nextLevel,
+								type: getNodeType(node.value[keys[i]])
+							});
 					} while (i--);
 				}
 			}
