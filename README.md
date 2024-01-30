@@ -68,7 +68,7 @@ const object = {
 
 ```js
 // Create depth-first iterator
-const depthIterator = Iterator.createDepthIterator(object);
+const depthIterator = Iterator.createDepthFirstIterator(object);
 // Traversal of all nodes
 while (depthIterator.has()) {
   console.log('depth', depthIterator.next());
@@ -85,7 +85,7 @@ while (depthIterator.has()) {
 
 ```js
 // Create breadth-first iterator
-const breadthIterator = Iterator.createBreadthIterator(object);
+const breadthIterator = Iterator.createBreadthFirstIterator(object);
 // Traversal of all nodes
 while (breadthIterator.has()) {
   console.log('breadth', breadthIterator.next());

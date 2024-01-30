@@ -1,7 +1,7 @@
 {
   "name": "@qpyracuk/iterator",
   "description": "Universal iterator for all data types",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "author": "Pobedinskiy David (qpyracuk)",
   "license": "Apache-2.0",
   "keywords": [
