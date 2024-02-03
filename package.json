@@ -1,7 +1,7 @@
 {
   "name": "@qpyracuk/iterator",
   "description": "Universal iterator for all data types",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "author": "Pobedinskiy David (qpyracuk)",
   "license": "Apache-2.0",
   "keywords": [
@@ -13,8 +13,8 @@
     "sequence"
   ],
   "type": "module",
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjd",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "files": [
     "dist",
