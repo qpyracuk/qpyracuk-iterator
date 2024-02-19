@@ -23,9 +23,8 @@ export default class BaseIterator implements IIterator {
     if (algorithm === 'depth') this._algorithm = true;
     else if (algorithm === 'breadth') this._algorithm = false;
     else throw new Error('Incorrect algorithm name');
-    const rootNode = { value: root, level: 0, key: root, type: getNodeType(root) };
-    if (isPrimitive(rootNode)) this._storage.push(rootNode);
-    else this._handler(rootNode);
+    const rootNode = { value: root, level: 0, key: 'root', type: getNodeType(root) };
+    this._storage.push(rootNode);
   }
 
   public has(): boolean {

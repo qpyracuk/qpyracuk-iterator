@@ -2,7 +2,7 @@ import { TNode } from '@/@types/general';
 
 const object = 'object';
 const array = 'array';
-const set = 'map';
+const set = 'set';
 const map = 'map';
 
 export default function getNodeType(node: any): TNode {
