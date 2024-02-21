@@ -8,6 +8,7 @@ export default class BaseIterator implements IIterator {
   //#region Приватные переменные
   private _storage: INode[] = [];
   private _filter: Set<any> = new Set();
+  private _rootName: string;
   private _root: any;
   private _current?: INode;
   private _depth: number;
@@ -15,15 +16,16 @@ export default class BaseIterator implements IIterator {
   private _algorithm: boolean;
   //#endregion
 
-  constructor(root: any, depth: number, algorithm: 'depth' | 'breadth') {
+  constructor(root: any, depth: number, algorithm: 'depth' | 'breadth', rootName?: string) {
     this._root = root;
     this._depth = depth;
     this._isInfinity = depth === -1;
-
+    if (typeof rootName === 'string') this._rootName = rootName || 'root';
+    else this._rootName = 'root';
     if (algorithm === 'depth') this._algorithm = true;
     else if (algorithm === 'breadth') this._algorithm = false;
     else throw new Error('Incorrect algorithm name');
-    const rootNode = { value: root, level: 0, key: 'root', type: getNodeType(root) };
+    const rootNode = { value: root, level: 0, key: this._rootName, type: getNodeType(root) };
     this._storage.push(rootNode);
   }
 
@@ -61,7 +63,7 @@ export default class BaseIterator implements IIterator {
   public reset(): void {
     this._filter.clear();
     this._storage = [];
-    this._handler({ value: this._root, level: 0, type: unknown, key: 'root' });
+    this._handler({ value: this._root, level: 0, type: unknown, key: this._rootName });
   }
 
   private _handler(node: INode): boolean {
