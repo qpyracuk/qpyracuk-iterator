@@ -16,9 +16,10 @@ export default class Iterator {
    * @returns {DeepFirstIterator} Depth-first iterator
    * @static
    */
-  static createDepthFirstIterator(root: any, depth: number | 'Infinity' = 'Infinity'): DepthFirstIterator {
-    if (depth === 'Infinity') return new DepthFirstIterator(root, -1);
-    else if (typeof depth === 'number' && depth > 0) return new DepthFirstIterator(root, depth);
+  static createDepthFirstIterator(root: any, depth: number | 'Infinity' = 'Infinity', rootName?: string): DepthFirstIterator {
+    if (depth === 'Infinity') return new DepthFirstIterator(root, -1, typeof rootName === 'string' && rootName.length > 0 ? rootName : 'root');
+    else if (typeof depth === 'number' && depth > 0)
+      return new DepthFirstIterator(root, depth, typeof rootName === 'string' && rootName.length > 0 ? rootName : 'root');
     else throw new Error('Depth parameter must be a positive number');
   }
 
@@ -29,9 +30,10 @@ export default class Iterator {
    * @returns {DeepFirstIterator} Breadth-first iterator
    * @static
    */
-  static createBreadthFirstIterator(root: any, depth: number | 'Infinity' = 'Infinity'): BreadthFirstIterator {
-    if (depth === 'Infinity') return new BreadthFirstIterator(root, -1);
-    else if (typeof depth === 'number' && depth > 0) return new BreadthFirstIterator(root, depth);
+  static createBreadthFirstIterator(root: any, depth: number | 'Infinity' = 'Infinity', rootName?: string): BreadthFirstIterator {
+    if (depth === 'Infinity') return new BreadthFirstIterator(root, -1, typeof rootName === 'string' && rootName.length > 0 ? rootName : 'root');
+    else if (typeof depth === 'number' && depth > 0)
+      return new BreadthFirstIterator(root, depth, typeof rootName === 'string' && rootName.length > 0 ? rootName : 'root');
     else throw new Error('Depth parameter must be a positive number');
   }
 
@@ -44,8 +46,8 @@ export default class Iterator {
    * of a depth-first traversal of this object
    * @static
    */
-  static createDepthFirstSequenceNode(root: any, depth: number | 'Infinity' = 'Infinity'): INode[] {
-    const iterator = Iterator.createDepthFirstIterator(root, depth),
+  static createDepthFirstSequenceNode(root: any, depth: number | 'Infinity' = 'Infinity', rootName?: string): INode[] {
+    const iterator = Iterator.createDepthFirstIterator(root, depth, typeof rootName === 'string' && rootName.length > 0 ? rootName : 'root'),
       response: INode[] = [];
     let item: INode | undefined;
     while ((item = iterator.next())) {
@@ -63,8 +65,8 @@ export default class Iterator {
    * of a breadth-first traversal of this object
    * @static
    */
-  static createBreadthFirstSequenceNode(root: any, depth: number | 'Infinity' = 'Infinity'): INode[] {
-    const iterator = Iterator.createBreadthFirstIterator(root, depth),
+  static createBreadthFirstSequenceNode(root: any, depth: number | 'Infinity' = 'Infinity', rootName?: string): INode[] {
+    const iterator = Iterator.createBreadthFirstIterator(root, depth, typeof rootName === 'string' && rootName.length > 0 ? rootName : 'root'),
       response: INode[] = [];
     let item: INode | undefined;
     while ((item = iterator.next())) {
@@ -82,8 +84,8 @@ export default class Iterator {
    * to the result of a depth-first traversal of this object.
    * @static
    */
-  static createDepthFirstSequenceLiaf(root: any, depth: number | 'Infinity' = 'Infinity'): INode[] {
-    const iterator = Iterator.createDepthFirstIterator(root, depth),
+  static createDepthFirstSequenceLiaf(root: any, depth: number | 'Infinity' = 'Infinity', rootName?: string): INode[] {
+    const iterator = Iterator.createDepthFirstIterator(root, depth, typeof rootName === 'string' && rootName.length > 0 ? rootName : 'root'),
       response: INode[] = [];
     let item: INode | undefined;
     while ((item = iterator.nextLiaf())) {
@@ -101,8 +103,8 @@ export default class Iterator {
    * to the result of a breadth-first traversal of this object.
    * @static
    */
-  static createBreadthFirstSequenceLiaf(root: any, depth: number | 'Infinity' = 'Infinity'): INode[] {
-    const iterator = Iterator.createBreadthFirstIterator(root, depth),
+  static createBreadthFirstSequenceLiaf(root: any, depth: number | 'Infinity' = 'Infinity', rootName?: string): INode[] {
+    const iterator = Iterator.createBreadthFirstIterator(root, depth, typeof rootName === 'string' && rootName.length > 0 ? rootName : 'root'),
       response: INode[] = [];
     let item: INode | undefined;
     while ((item = iterator.nextLiaf())) {

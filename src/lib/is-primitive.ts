@@ -11,6 +11,7 @@ export default function isPrimitive(node: INode) {
       case 'symbol':
       case 'bigint':
       case 'undefined':
+      case 'null':
         return true;
       default:
         return false;

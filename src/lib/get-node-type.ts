@@ -1,16 +1,18 @@
 import { TNode } from '@/@types/general';
 
-const object = 'object';
-const array = 'array';
-const set = 'set';
-const map = 'map';
+const OBJECT = 'object';
+const ARRAY = 'array';
+const SET = 'set';
+const MAP = 'map';
+const NULL = 'null';
 
 export default function getNodeType(node: any): TNode {
+  if (node === null) return NULL;
   const type = typeof node;
-  if (type === object) {
-    if (node instanceof Array) return array;
-    else if (node instanceof Set) return set;
-    else if (node instanceof Map) return map;
-    else return object;
+  if (type === OBJECT) {
+    if (node instanceof Array) return ARRAY;
+    else if (node instanceof Set) return SET;
+    else if (node instanceof Map) return MAP;
+    else return OBJECT;
   } else return type;
 }
